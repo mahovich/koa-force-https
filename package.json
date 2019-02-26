@@ -1,0 +1,34 @@
+{
+  "name": "koa-force-https",
+  "version": "1.0.0",
+  "description": "Koa.js middleware to force HTTPS connection on any incoming requests",
+  "main": "index.js",
+  "homepage": "https://github.com/mahovich/koa-force-https",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mahovich/koa-force-https.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mahovich/koa-force-https/issues"
+  },
+  "devDependencies": {
+    "koa": "^2.0.0"
+  },
+  "keywords": [
+    "koa",
+    "koa.js",
+    "middleware",
+    "https",
+    "ssl",
+    "http2",
+    "redirect",
+    "force",
+    "node",
+    "node.js"
+  ],
+  "author": "mahovich",
+  "license": "MIT",
+  "engines": {
+    "node": ">6.0.0"
+  }
+}
