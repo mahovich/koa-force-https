@@ -1,6 +1,6 @@
 {
   "name": "koa-force-https",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Koa.js middleware to force HTTPS connection on any incoming requests",
   "main": "index.js",
   "homepage": "https://github.com/mahovich/koa-force-https",

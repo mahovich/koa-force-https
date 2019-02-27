@@ -49,25 +49,26 @@ const app = new Koa();
 app.use(forceHTTPS());
 
 app.use((ctx) => {
-  ctx.body = 'Hello, world! This is an HTTPS connection.';
+  ctx.body = 'Hello! This is an HTTPS connection.';
 });
 
-// Runs 2 servers for the application. Requests from the HTTP server will be redirected to the HTTPS server.
+// Runs 2 servers for the application
+// Requests from the HTTP server will be redirected to the HTTPS server
 http.createServer(app.callback()).listen(80);
 https.createServer(options, app.callback()).listen(443);
 ```
 
 **Some results requests for this example**
 
-| Request URL                  | Status Code | Location                      |
-|------------------------------|-------------|-------------------------------|
-| http://example.com           | `301`       | https://example.com           |
-| http://www.example.com       | `301`       | https://www.example.com       |
-| http://www.example.com/news  | `301`       | https://www.example.com/news  |
-| http://www.example.com/?id=1 | `301`       | https://www.example.com/?id=1 |
-| http://example.com/news?id=1 | `301`       | https://example.com/news?id=1 |
-| https://example.com          | `200`       | *no change*                   |
-| https://www.example.com      | `200`       | *no change*                   |
+| Request URL                    | Status Code | Location                        |
+|--------------------------------|-------------|---------------------------------|
+| `http://example.com`           | `301`       | `https://example.com`           |
+| `http://www.example.com`       | `301`       | `https://www.example.com`       |
+| `http://www.example.com/news`  | `301`       | `https://www.example.com/news`  |
+| `http://www.example.com/?id=1` | `301`       | `https://www.example.com/?id=1` |
+| `http://example.com/news?id=1` | `301`       | `https://example.com/news?id=1` |
+| `https://example.com`          | `200`       | *no redirect*                   |
+| `https://www.example.com`      | `200`       | *no redirect*                   |
 
 ### Redirect requests from `http` to `https` (using HTTP/2 protocol) to hostname `example.com` using the HTTP status code `307` ("307 Temporary Redirect")
 ```
@@ -87,7 +88,7 @@ const app = new Koa();
 app.use(forceHTTPS(undefined, 'example.com', 307));
 
 app.use((ctx) => {
-  ctx.body = 'Hello, world! This is an HTTPS connection using HTTP/2 protocol.';
+  ctx.body = 'Hello! This is an HTTPS connection using HTTP/2 protocol.';
 });
 
 http.createServer(app.callback()).listen(80);
@@ -96,15 +97,15 @@ http2.createSecureServer(options, app.callback()).listen(443);
 
 **Some results requests for this example**
 
-| Request URL                  | Status Code | Location                      |
-|------------------------------|-------------|-------------------------------|
-| http://example.com           | `307`       | https://example.com           |
-| http://www.example.com       | `307`       | https://example.com           |
-| http://www.example.com/news  | `307`       | https://example.com/news      |
-| http://www.example.com/?id=1 | `307`       | https://example.com/?id=1     |
-| http://example.com/news?id=1 | `307`       | https://example.com/news?id=1 |
-| https://example.com          | `200`       | *no change*                   |
-| https://www.example.com      | `200`       | *no change*                   |
+| Request URL                    | Status Code | Location                        |
+|--------------------------------|-------------|---------------------------------|
+| `http://example.com`           | `307`       | `https://example.com`           |
+| `http://www.example.com`       | `307`       | `https://example.com`           |
+| `http://www.example.com/news`  | `307`       | `https://example.com/news`      |
+| `http://www.example.com/?id=1` | `307`       | `https://example.com/?id=1`     |
+| `http://example.com/news?id=1` | `307`       | `https://example.com/news?id=1` |
+| `https://example.com`          | `200`       | *no redirect*                   |
+| `https://www.example.com`      | `200`       | *no redirect*                   |
 
 ## License
 koa-force-https is [MIT licensed](https://github.com/mahovich/koa-force-https/blob/master/LICENSE).
