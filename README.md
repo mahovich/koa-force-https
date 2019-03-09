@@ -4,7 +4,7 @@
 
 ## Requirements
 - Koa@2+
-- Node@6+
+- Node@6.13+
 
 ## Installation 
 ```
@@ -13,11 +13,11 @@ $ npm install koa-force-https --save
 
 ## Options
 
-| Name             | Type    | Default     | Description                                                              |
-|------------------|---------|-------------|--------------------------------------------------------------------------|
-| `port`           | Integer | `443`       | Port of HTTPS server (port `:443` is automatically removed from the URL) |
-| `hostname`       | String  | `same host` | Hostname for redirect                                                    |
-| `httpStatusCode` | Integer | `301`       | HTTP status code for redirect                                            |
+| Name             | Type    | Default     | Description                                                    |
+|------------------|---------|-------------|----------------------------------------------------------------|
+| `port`           | Integer |             | HTTPS port (port `:443` is automatically removed from the URL) |
+| `hostname`       | String  | `same host` | Hostname for redirect                                          |
+| `httpStatusCode` | Integer | `301`       | HTTP status code for redirect                                  |
 
 ## Usage
 ```
@@ -62,8 +62,8 @@ https.createServer(options, app.callback()).listen(443);
 
 | Request URL                    | Status Code | Location                        |
 |--------------------------------|-------------|---------------------------------|
-| `http://example.com`           | `301`       | `https://example.com`           |
-| `http://www.example.com`       | `301`       | `https://www.example.com`       |
+| `http://example.com`           | `301`       | `https://example.com/`          |
+| `http://www.example.com`       | `301`       | `https://www.example.com/`      |
 | `http://www.example.com/news`  | `301`       | `https://www.example.com/news`  |
 | `http://www.example.com/?id=1` | `301`       | `https://www.example.com/?id=1` |
 | `http://example.com/news?id=1` | `301`       | `https://example.com/news?id=1` |
@@ -99,8 +99,8 @@ http2.createSecureServer(options, app.callback()).listen(443);
 
 | Request URL                    | Status Code | Location                        |
 |--------------------------------|-------------|---------------------------------|
-| `http://example.com`           | `307`       | `https://example.com`           |
-| `http://www.example.com`       | `307`       | `https://example.com`           |
+| `http://example.com`           | `307`       | `https://example.com/`          |
+| `http://www.example.com`       | `307`       | `https://example.com/`          |
 | `http://www.example.com/news`  | `307`       | `https://example.com/news`      |
 | `http://www.example.com/?id=1` | `307`       | `https://example.com/?id=1`     |
 | `http://example.com/news?id=1` | `307`       | `https://example.com/news?id=1` |
@@ -108,4 +108,4 @@ http2.createSecureServer(options, app.callback()).listen(443);
 | `https://www.example.com`      | `200`       | *no redirect*                   |
 
 ## License
-koa-force-https is [MIT licensed](https://github.com/mahovich/koa-force-https/blob/master/LICENSE).
+`koa-force-https` is [MIT licensed](https://github.com/mahovich/koa-force-https/blob/master/LICENSE).

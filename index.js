@@ -1,5 +1,3 @@
-const url = require('url');
-
 /**
  * Force HTTPS connection on any incoming requests
  *
@@ -10,12 +8,14 @@ const url = require('url');
  * @api    public
  */
 
-module.exports = (port = 443, hostname, httpStatusCode = 301) => (ctx, next) => {
+module.exports = (port, hostname, httpStatusCode = 301) => (ctx, next) => {
   if (ctx.secure) return next();
 
-  const httpsPort = (port === 443) ? '' : `:${port}`;
-  const httpsHost = hostname || url.parse(`http://${ctx.request.header.host}`).hostname;
+  const urlRedirect = ctx.request.URL;
+  urlRedirect.protocol = 'https';
+  if (port) urlRedirect.port = port;
+  if (hostname) urlRedirect.hostname = hostname;
 
   ctx.response.status = httpStatusCode;
-  ctx.response.redirect(`https://${httpsHost}${httpsPort}${ctx.request.url}`);
+  ctx.response.redirect(urlRedirect.href);
 };
