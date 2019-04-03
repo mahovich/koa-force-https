@@ -1,13 +1,11 @@
 /**
  * Force HTTPS connection on any incoming requests
  *
- * @param  {Integer}  port
- * @param  {String}   hostname
- * @param  {Integer}  httpStatusCode
+ * @param  {Number}   [port]
+ * @param  {String}   [hostname]
+ * @param  {Number}   [httpStatusCode=301]
  * @return {Function}
- * @api    public
  */
-
 module.exports = (port, hostname, httpStatusCode = 301) => (ctx, next) => {
   if (ctx.secure) return next();
 
