@@ -3,12 +3,14 @@
 [Koa.js](https://koajs.com/) middleware to force HTTPS connection on any incoming requests. In case of a non-encrypted HTTP request, `koa-force-https` automatically redirects to an HTTPS address.
 
 ## Requirements
+
 - Koa@2+
 - Node@6.13+
 
-## Installation 
-```
-$ npm install koa-force-https --save
+## Installation
+
+```sh
+npm install koa-force-https --save
 ```
 
 ## Options
@@ -20,7 +22,8 @@ $ npm install koa-force-https --save
 | `httpStatusCode` | Integer | `301`       | HTTP status code for redirect                                  |
 
 ## Usage
-```
+
+```js
 const Koa = require('koa');
 const forceHTTPS = require('koa-force-https');
 
@@ -32,7 +35,8 @@ app.use(forceHTTPS());
 ## Examples
 
 ### Redirect requests from `http` to `https`
-```
+
+```js
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
@@ -58,7 +62,7 @@ http.createServer(app.callback()).listen(80);
 https.createServer(options, app.callback()).listen(443);
 ```
 
-**Some results requests for this example**
+#### Some results requests for this example
 
 | Request URL                    | Status Code | Location                        |
 |--------------------------------|-------------|---------------------------------|
@@ -71,7 +75,8 @@ https.createServer(options, app.callback()).listen(443);
 | `https://www.example.com`      | `200`       | *no redirect*                   |
 
 ### Redirect requests from `http` to `https` (using HTTP/2 protocol) to hostname `example.com` using the HTTP status code `307` ("307 Temporary Redirect")
-```
+
+```js
 const fs = require('fs');
 const http = require('http');
 const http2 = require('http2');
@@ -95,7 +100,7 @@ http.createServer(app.callback()).listen(80);
 http2.createSecureServer(options, app.callback()).listen(443);
 ```
 
-**Some results requests for this example**
+#### Results requests for this example
 
 | Request URL                    | Status Code | Location                        |
 |--------------------------------|-------------|---------------------------------|
@@ -108,4 +113,5 @@ http2.createSecureServer(options, app.callback()).listen(443);
 | `https://www.example.com`      | `200`       | *no redirect*                   |
 
 ## License
+
 `koa-force-https` is [MIT licensed](https://github.com/mahovich/koa-force-https/blob/master/LICENSE).
