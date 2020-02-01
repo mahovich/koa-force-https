@@ -7,10 +7,10 @@
 - Koa@2+
 - Node@6.13+
 
-## Installation
+## Install
 
-```sh
-npm install koa-force-https --save
+```bash
+npm i koa-force-https
 ```
 
 ## Options
