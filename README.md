@@ -1,4 +1,4 @@
-# koa-force-https &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mahovich/koa-force-https/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/koa-force-https.svg?style=flat)](https://www.npmjs.com/package/koa-force-https) [![minzipped size](https://img.shields.io/bundlephobia/minzip/koa-force-https.svg?label=gzip%20size)](https://bundlephobia.com/result?p=koa-force-https)
+# koa-force-https &middot; [![npm version](https://img.shields.io/npm/v/koa-force-https.svg?style=flat)](https://www.npmjs.com/package/koa-force-https) [![minzipped size](https://img.shields.io/bundlephobia/minzip/koa-force-https.svg?label=gzip%20size)](https://bundlephobia.com/result?p=koa-force-https)
 
 [Koa.js](https://koajs.com/) middleware to force HTTPS connection on any incoming requests. In case of a non-encrypted HTTP request, `koa-force-https` automatically redirects to an HTTPS address.
 
